@@ -11,7 +11,7 @@ export default {
       pathname === "/comingsoon/" ||
       pathname === "/comingsoon/index.html"
     ) {
-      return serveAsset(new Request(new URL("/ComingSoon/index.html", url), request), env);
+      return serveAsset(new Request(new URL("/ComingSoon/", url), request), env);
     }
 
     if (url.pathname.startsWith("/api/")) {
@@ -27,7 +27,7 @@ export default {
     }
 
     if (!url.pathname.startsWith("/assets/")) {
-      return Response.redirect(new URL("/comingsoon/index.html", url), 302);
+      return Response.redirect(new URL("/comingsoon/", url), 302);
     }
     return serveAsset(request, env);
   },
