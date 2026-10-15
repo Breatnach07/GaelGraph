@@ -27,7 +27,7 @@ export default {
     }
 
     if (!url.pathname.startsWith("/assets/")) {
-      return Response.redirect(new URL("/ComingSoon/index.html", url), 302);
+      return Response.redirect(new URL("/comingsoon/index.html", url), 302);
     }
     return serveAsset(request, env);
   },
