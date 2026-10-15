@@ -39,3 +39,16 @@ Daily scores are computed and persisted by the Worker. The game submission accep
 - Friend requests are identified by the opaque profile `user_id`; never use Google subject IDs as public friend IDs.
 
 The frontend uses no framework or runtime package dependencies. Static assets are served by Cloudflare's asset binding; D1 and the Worker handle private data and score calculations.
+
+## Worker source layout
+
+- `src/worker.js` is the Cloudflare entry point and owns static routing and the daily cron trigger.
+- `src/routes/` contains API dispatch and the auth, profile, game, leaderboard, and friends handlers.
+- `src/services/daily-questions.js` handles scheduled question selection and the seven-day no-repeat rule.
+- `src/lib/` contains shared request/response, date, and signed-session helpers.
+
+The normal game-load path batches the score and daily-question reads with conditional session creation in a single D1 round trip. Authentication uses the signed cookie without a database lookup; profile details are fetched only by the profile endpoint.
+
+## Coming-soon redirect
+
+The Worker is attached to `gaelgraph.com/*` and redirects page requests to `/ComingSoon` with a temporary `302` response. The coming-soon document and `/assets/` files are served normally, while `/api/` remains available for the application backend. The domain must be active in the same Cloudflare zone, with its DNS record proxied through Cloudflare. Update the Worker routing in `src/index.js` when the full site is ready to go live.

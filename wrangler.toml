@@ -1,6 +1,7 @@
 name = "gaelgraph"
-main = "src/index.js"
+main = "src/worker.js"
 compatibility_date = "2026-10-15"
+routes = [{ pattern = "gaelgraph.com/*", zone_name = "gaelgraph.com" }]
 
 [assets]
 directory = "./public"
