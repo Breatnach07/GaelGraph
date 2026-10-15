@@ -1,0 +1,10 @@
+[[d1_databases]]
+binding = "DB"
+database_name = "gaelgraph"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[vars]
+GOOGLE_CLIENT_ID = "REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID"
+
+This is importannt to add to wrangler after init.
