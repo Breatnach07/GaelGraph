@@ -51,4 +51,4 @@ The normal game-load path batches the score and daily-question reads with condit
 
 ## Coming-soon redirect
 
-The Worker is attached to `gaelgraph.com/*` and redirects page requests to `/ComingSoon` with a temporary `302` response. The coming-soon document and `/assets/` files are served normally, while `/api/` remains available for the application backend. The domain must be active in the same Cloudflare zone, with its DNS record proxied through Cloudflare. Update the Worker routing in `src/index.js` when the full site is ready to go live.
+The Worker is attached to `gaelgraph.com/*` and redirects page requests to `/ComingSoon/index.html` with a temporary `302` response. The coming-soon document and `/assets/` files are served normally, while `/api/` remains available for the application backend. The domain must be active in the same Cloudflare zone, with its DNS record proxied through Cloudflare. Update the Worker routing in `src/worker.js` when the full site is ready to go live.

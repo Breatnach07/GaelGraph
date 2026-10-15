@@ -6,8 +6,12 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname.toLowerCase();
 
-    if (pathname === "/comingsoon" || pathname === "/comingsoon/") {
-      return serveAsset(new Request(new URL("/ComingSoon/", url), request), env);
+    if (
+      pathname === "/comingsoon" ||
+      pathname === "/comingsoon/" ||
+      pathname === "/comingsoon/index.html"
+    ) {
+      return serveAsset(new Request(new URL("/ComingSoon/index.html", url), request), env);
     }
 
     if (url.pathname.startsWith("/api/")) {
@@ -23,7 +27,7 @@ export default {
     }
 
     if (!url.pathname.startsWith("/assets/")) {
-      return Response.redirect(new URL("/ComingSoon", url), 302);
+      return Response.redirect(new URL("/ComingSoon/index.html", url), 302);
     }
     return serveAsset(request, env);
   },
