@@ -1,0 +1,45 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17352a;
+  background: #fafbfa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.coming-soon {
+  min-height: 100vh;
+  margin: 0;
+  background: #fafbfa;
+}
+
+.coming-soon__bar {
+  height: 9px;
+  background: #10a66a;
+}
+
+.coming-soon__content {
+  display: grid;
+  min-height: calc(100vh - 9px);
+  place-content: center;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.coming-soon__title {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 750;
+  letter-spacing: -0.07em;
+}
+
+.coming-soon__subtitle {
+  margin: 14px 0 0;
+  color: #10a66a;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}

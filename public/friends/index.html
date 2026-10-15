@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12372d">
+  <title>Friends — Gaeilge Daily</title>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script src="/assets/js/app.js" defer></script>
+</head>
+<body data-protected="true">
+  <header class="shell site-header">
+    <a class="brand" href="/"><span class="brand-mark">G</span> Gaeilge Daily</a>
+    <nav class="nav" aria-label="Main navigation"><a href="/leaderboard/">Leaderboard</a><a href="/friends/" aria-current="page">Friends</a><button class="icon-button" data-settings aria-label="Settings">⚙</button></nav>
+  </header>
+  <main class="shell app-content" data-authenticated hidden>
+    <div class="page-heading"><p class="eyebrow">Learn together</p><h1>Your Gaeilge circle</h1><p>Share your ID or add a friend to keep each other going.</p></div>
+    <section class="user-id-box panel"><div><p class="eyebrow">Your unique ID</p><code data-user-id>Loading…</code></div><button class="button secondary" id="copy-id" type="button">Copy ID</button></section>
+    <section class="friends-panel panel" style="margin-top:18px">
+      <h2>Add a friend</h2><p>Enter their unique user ID to send a friend request.</p>
+      <form id="friend-form" style="display:flex;gap:10px;flex-wrap:wrap">
+        <label class="form-field" style="flex:1 1 270px;margin:0"><span class="small">User ID</span><input name="userId" autocomplete="off" required placeholder="Paste a friend's ID"></label>
+        <button class="button" type="submit" style="align-self:end">Send request</button>
+      </form><p class="status" id="friends-status" role="status" style="margin:12px 0 0"></p>
+    </section>
+    <div class="friends-grid">
+      <section class="friends-panel panel"><h2>Friend requests</h2><div id="incoming-requests"><div class="empty-state">Loading…</div></div></section>
+      <section class="friends-panel panel"><h2>Friends</h2><div id="accepted-friends"><div class="empty-state">Loading…</div></div><h3 style="margin:20px 0 0">Sent requests</h3><div id="outgoing-requests"></div></section>
+    </div>
+  </main>
+  <p class="shell status" data-page-status role="status"></p>
+  <footer class="shell site-footer">Good company makes good practice.</footer>
+  <div class="modal-backdrop" id="region-modal" hidden><section class="modal panel" role="dialog" aria-modal="true" aria-labelledby="region-title"><p class="eyebrow">Your profile</p><h2 id="region-title">Update your region</h2><form id="region-form"><label class="form-field">Region<select name="regionType"><option value="ireland">Ireland</option><option value="international">International</option></select></label><label class="form-field">County or area<select name="regionName"></select></label><p class="status" role="status"></p><button class="button full" type="submit">Save region</button><button class="button subtle full" style="margin-top:9px" type="button" data-close-region>Cancel</button></form></section></div>
+  <script>
+    document.querySelector("#copy-id").addEventListener("click", async () => {
+      const value = document.querySelector("[data-user-id]").textContent;
+      try {
+        await navigator.clipboard.writeText(value);
+        document.querySelector("#copy-id").textContent = "Copied!";
+      } catch {
+        document.querySelector("#friends-status").textContent = "Copy failed. Select and copy your ID instead.";
+      }
+    });
+  </script>
+</body>
+</html>
