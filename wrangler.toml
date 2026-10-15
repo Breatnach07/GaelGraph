@@ -1,6 +1,8 @@
 name = "gaelgraph"
 main = "src/worker.js"
 compatibility_date = "2026-10-15"
+workers_dev = true
+preview_urls = true
 routes = [{ pattern = "gaelgraph.com/*", zone_name = "gaelgraph.com" }]
 
 [assets]
